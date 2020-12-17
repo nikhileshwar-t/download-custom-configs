@@ -25,7 +25,8 @@ let config = {
 
 axios(config)
 .then(function (response) {
-  console.log(JSON.stringify(response.data,null, 4));
+  // console.log(JSON.stringify(response.data,null, 4));
+  return response
 })
 .catch(function (error) {
   console.log(error);

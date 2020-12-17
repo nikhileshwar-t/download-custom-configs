@@ -4,12 +4,13 @@ const customConfigs = (app) => {
         let tenantDetails = req.body.params.tenantDetails
         let configs=req.body.params.configs
         console.clear()
+        let resp = null
         for (const x of configs) {
             let data = null
             switch (x) {
                 case 'graphprocess':
                     data = JSON.stringify({ "params": { "query": { "filters": { "typesCriterion": ["graphprocessmodel"] } }, "fields": { "attributes": ["_ALL"], "relationships": ["_ALL"] } } });
-                    configAPI.fetch(tenantDetails , data , '/api/entitymodelservice/get');
+                    resp = configAPI.fetch(tenantDetails , data , '/api/entitymodelservice/get');
                     break;
 
                 case 'profiles':
@@ -27,7 +28,7 @@ const customConfigs = (app) => {
             }
         }
 
-        res.send("url here");
+        res.send(resp);
     })
 }
 
